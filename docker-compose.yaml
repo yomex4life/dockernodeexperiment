@@ -1,7 +1,21 @@
 services:
+    mongodb:
+        image: mongo
+        environment: 
+            - MONGO_INITDB_ROOT_USERNAME=admin
+            - MONGO_INITDB_ROOT_PASSWORD=password
+        volumes: 
+            - mongo-db:/data/db
     web:
         build: . #path to docker file
+        depends_on:
+            - mongodb
         ports:
             - 4000:4000        
         environment: 
             PORT: 4000
+            DATABASE_URL: 
+
+
+volumes:
+    mongo-db:
