@@ -10,6 +10,7 @@
   "author": "Yomi",
   "license": "ISC",
   "dependencies": {
+    "argon2": "^0.27.2",
     "express": "^4.17.1",
     "mongoose": "^5.12.5"
   },
