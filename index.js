@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const { MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT } = require('./config');
 
 const app = express();
-//mongoose.connect("mongodb://admin:password@mongodb:27017/?authsource=admin")
+
+const postRouter = require('./routes/postRoutes');
 const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authsource=admin`;
 
 const connectWithRetry = () =>{
@@ -20,6 +21,9 @@ const connectWithRetry = () =>{
 }
 connectWithRetry();
 
+app.use(express.json());
+
+app.use("/api/v1/post", postRouter);
 
 const port = process.env.PORT || 3000;
 
