@@ -1,0 +1,11 @@
+services:
+    web:
+        build: . #path to docker file
+        ports:
+            - 4000:4000
+        volumes:
+            - .:/app
+            - /app/node_modules
+        command: npm run dev
+        environment: 
+            PORT: 4000
