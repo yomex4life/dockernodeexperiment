@@ -30,6 +30,7 @@ exports.signUp = async(req, res) =>{
             username,
             password: hashPassword
         });
+        req.session.user = user;
         res.status(200).json({
             status: "Success",
             data: {user}
@@ -65,6 +66,7 @@ exports.login = async (req, res) =>{
                 message: "User doesn't exist"
             })
         }
+        req.session.user = user;
         res.status(200).json({
             status: "Success",
             data: {user}
